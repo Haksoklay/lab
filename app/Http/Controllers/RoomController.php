@@ -21,6 +21,16 @@ class RoomController extends Controller
         return inertia('Room/Create');
     }
 
+    public function edit(string $id){
+       return Room::query()
+        ->where('room_id',$id)
+        ->firstOrFail();
+        // if(!$room){
+        //     abort(404);
+        // }
+        // return $room;
+    }
+
     public function store(Request $request,$id=null){
        $request->validate([
         'name'=>'required|unique:rooms,name',
@@ -35,8 +45,11 @@ class RoomController extends Controller
             'description'=>$request->input('description'),
             'capacity'=>$request->input('capacity'),
             'status'=>$request->input('status'),
-            'user_id'=>1,
+            'user_id'=>auth()->user()->id,
         ]);
         return redirect()->back();
     }
+
+
+   
 }

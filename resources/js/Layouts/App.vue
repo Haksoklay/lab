@@ -1,31 +1,27 @@
-<script setup>
-import Header from "./Header.vue";
-import Footer from "./Footer.vue";
-import Sidebar from "./Sidebar.vue";
+<script setup lang="ts">
+import Header from "@/Layouts/Header.vue";
+import Sidebar from "@/Layouts/Sidebar.vue";
+import { Head } from "@inertiajs/vue3";
 </script>
-
 <template>
+    <Head>
+        <title>Dasboard</title>
+    </Head>
 
-    <div>
-        <!-- Hearder -->
-        <Header></Header>
-    </div>
-    <div class="flex gap-4">
-        <div class="w-60 bg-red-200 shrink-0">
-            <Sidebar/>
+    <div class="flex h-screen p-3 bg-blue-700 dark:bg-blue-900">
+        <Sidebar />
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <Header />
+            <main
+                id="full-screen-main"
+                class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 dark:bg-slate-800 scroll-smooth rounded-b-2xl dark:text-white"
+                scroll-region
+            >
+                <div>
+                    <slot />
+                </div>
+            </main>
         </div>
-        <div class="w-full">
-            <!-- main content -->
-            <slot></slot>
-        </div>
-       
-        <!-- main content -->
-
     </div>
-
-    <div>
-        <!-- footer -->
-        <Footer></Footer>
-    </div>
-
-</template> 
+</template>
+@/Stores/useCount

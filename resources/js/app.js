@@ -6,7 +6,10 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import Heading from './Components/Heading.vue';
+import { createPinia } from 'pinia';
 
+
+const pinia = createPinia()
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -16,7 +19,8 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            .component('Heading',Heading)
+            .use(pinia)
+            // .component('Heading',Heading)
             .mount(el);
     },
     progress: {

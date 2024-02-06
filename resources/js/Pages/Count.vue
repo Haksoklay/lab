@@ -1,15 +1,22 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,reactive } from 'vue';
 
-const message=ref("Hello Vue 3");
-
+const message=ref("Hello World");
+const count=reactive({number:0});
+function updateMessage(){
+    message.value="Hello world updated";
+    count.number=90;
+}
 </script>
 <template>
     <div>
+               {{ message }}, {{ count.number }}
+    </div>
 
-        
-        {{ message }}
-
+    <div>
+        <button class="p-5 text-lg text-white bg-red-500 rounded-lg">
+            Click me
+        </button>
     </div>
        
 </template>

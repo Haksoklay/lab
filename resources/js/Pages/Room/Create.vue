@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue';
-import { router } from '@inertiajs/vue3';
+import { router,Link } from '@inertiajs/vue3';
 import Layout from "@/Layouts/App.vue";
+
 
 
     const props=defineProps({
@@ -56,7 +57,12 @@ import Layout from "@/Layouts/App.vue";
 <template>
     
    <Layout>
-    <div class="container p-4 px-8  mx-auto border mt-6 rounded-xl">
+    <div class="p-4">
+        <div class="my-2">
+                <Link
+                    href="/room/" 
+                    class="bg-yellow-600 rounded-md text-white p-2">Back</Link>
+        </div>
         <h2 class="text-2xl text-blue-600 sm:text-red-600 md:text-yellow-600 lg:text-purple-600">Create Room</h2>
        <div class="text-green-600">
         {{ message }}
@@ -66,14 +72,14 @@ import Layout from "@/Layouts/App.vue";
             <div class="flex flex-col gap-2 lg:flex-row">
                 <div class="flex flex-col w-full">
                     <label>Room name</label>
-                    <input v-model.trim="form.name" type="text" class="p-2 rounded-md" />
+                    <input v-model.trim="form.name" type="text" class="p-2 rounded-md dark:bg-slate-400" />
                     <div v-if="errors.name" class="text-red-500 text-sm">
                         {{ errors.name }}
                     </div>
                 </div>
                 <div class="flex flex-col w-full">
                     <label>Description</label>
-                    <textarea v-model="form.description" class="rounded-md"></textarea>
+                    <textarea v-model="form.description" class="rounded-md dark:bg-slate-400"></textarea>
                    
                 </div>
             </div>
@@ -81,14 +87,14 @@ import Layout from "@/Layouts/App.vue";
             <div class="flex flex-col gap-2 lg:flex-row">
                 <div class="flex flex-col w-full">
                     <label>Capacity</label>
-                    <input v-model.number="form.capacity" class="rounded-md" type="number"/>
+                    <input v-model.number="form.capacity" class="rounded-md dark:bg-slate-400" type="number"/>
                     <div v-if="errors.capacity" class="text-red-500 text-sm">
                         {{ errors.capacity }}
                     </div>
                 </div>
                 <div class="flex flex-col w-full">
                     <label>Status</label>
-                    <select v-model="form.status" class="rounded-md">
+                    <select v-model="form.status" class="rounded-md dark:bg-slate-400">
                         <option value="">Select a Status</option>
                         <option value="active">Active</option>
                         <option value="maintenance">Maintenance</option>
